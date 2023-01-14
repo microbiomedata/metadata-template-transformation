@@ -1,265 +1,264 @@
-emsl_field  sub_port_field
-GUID Source    
-Other GUID Source   
-Unique ID     globally unique ID
-Sample Name sample name
-Analysis/Data Type    analysis/data type
-Number Technical Replicate    number technical replicate
-Replicate Number  replicate
-Source Material ID
-sample linkage    sample linkage
-Growth Facility   growth facility
-Other Growth Facility 
-Sample size   
-Collection Date   collection date
-Storage Condition storage conditions
-Other Storage Condition   
-Storage temperature   EMSL sample storage temperature, deg. C
-Other Storage temperature sample storage temperature
-Geographical Location Name    geographic location (country and/or sea,region)
-latitude, longitude   geographic location (latitude and longitude)
-elevation-meters  elevation
-Material Processing   sample material processing
-sample collection method  sample collection method
-depth depth, meters
-sample collection device  sample collection device
-Sieve Size    
-Filter Method filter method
-Plant Structure   
-Incubation Start Date incubation start date
-Incubation Collection Date    incubation collection time, GMT
-collection time   collection time, GMT
-common name
-NCBI ID   
-isolation and growth condition      
-Growth Medium 
-watering regimen/schedule treatment   watering regimen
-air temperature regimen treatment air temperature regimen
-chemical administration   chemical administration
-isotope exposure/addition treatment   isotope exposure/addition
-gas evironment/exposure treatment gaseous environment
-climate environment treatment climate environment
-humidity regimen/adition treatment    humidity regimen
-light regimen treatment   light regimen
-biotic regimen/addition treatment biotic regimen
-other treatments  other treatments
-Extraction method DNA isolation method
-Method Test   
-altitude-meters   altitude
+GUID Source	
+Other GUID Source	
+Unique ID	globally unique ID
+Sample Name	sample name
+Analysis/Data Type	analysis/data type
+Number Technical Replicate	number technical replicate
+Replicate Number	replicate
+Source Material ID	
+sample linkage	sample linkage
+Growth Facility	growth facility
+Other Growth Facility	
+Sample size	
+Collection Date	collection date
+Storage Condition	storage conditions
+Other Storage Condition	
+Storage temperature	EMSL sample storage temperature, deg. C
+Other Storage temperature	sample storage temperature
+Geographical Location Name	geographic location (country and/or sea,region)
+latitude, longitude	 geographic location (latitude and longitude)
+elevation-meters	elevation
+Material Processing	sample material processing
+sample collection method	sample collection method
+depth	depth, meters
+sample collection device	sample collection device
+Sieve Size	
+Filter Method	filter method
+Plant Structure	
+Incubation Start Date	incubation start date
+Incubation Collection Date	incubation collection time, GMT
+collection time	collection time, GMT	
+common name	
+NCBI ID	
+isolation and growth condition	
+Growth Medium	
+watering regimen/schedule treatment	watering regimen
+air temperature regimen treatment	air temperature regimen
+chemical administration	chemical administration
+isotope exposure/addition treatment	isotope exposure/addition
+gas evironment/exposure treatment	gaseous environment
+climate environment treatment	climate environment
+humidity regimen/adition treatment	humidity regimen
+light regimen treatment	light regimen
+biotic regimen/addition treatment	biotic regimen
+other treatments	other treatments
+Extraction method	DNA isolation method
+Method Test	
+altitude-meters	altitude
 Other
-amount or size of sample collected    amount or size of sample collected
-experimental factor   experimental factor
-experimental factor- other    experimental factor- other
-relationship to oxygen    relationship to oxygen
+amount or size of sample collected	amount or size of sample collected
+experimental factor	experimental factor
+experimental factor- other	experimental factor- other
+relationship to oxygen	relationship to oxygen
 non microbial biomass non-microbial biomass
-non-microbial biomass method  non-microbial biomass method
-observed biotic relationship  observed biotic relationship
-encoded traits    
-host specificity or range 
-known pathogenicity    
-propagation   
-reference for biomaterial 
-specific host 
-subspecific genetic lineage   
-trophic level 
-ancestral data    
-antibiotic regimen    
-biological status
-chemical mutagen  
-culture rooting medium    
-fertilizer regimen    
-fungicide regimen 
-genetic modification  
-gravity   
-growth habit  
-growth hormone regimen    
-herbicide regimen 
-host age  
-host disease status   
-host dry mass 
-host genotype 
-host height   
-host infra-specific name  
-host infra-specific rank  
-host length   
-host life stage   
-host phenotype    
-observed host symbionts   
-host total mass   
-host wet mass 
-mechanical damage 
-mineral nutrient regimen  
-non-mineral nutrient regimen  
-pesticide regimen 
-pH regimen    
-plant growth medium   
-plant product 
-plant sex 
-radiation regimen 
-rainfall regimen  
-rooting conditions    
-rooting medium carbon 
-rooting medium macronutrients 
-rooting medium micronutrients 
-rooting medium pH 
-rooting medium regulators 
-rooting medium solidifier 
-rooting medium organic supplements    
-salt regimen  
-sample capture status 
-other sample capture status   
-sample disease stage  
-other sample disease stage    
-seasonal environment
-standing water regimen    
-tissue culture growth media   
-water temperature regimen 
-miscellaneous parameter   miscellaneous parameter
-organism count    
-perturbation  
-temperature   temperature
-pH    pH
-pH method pH method
-alkyl diethers    
-aminopeptidase activity   
-ammonium  
-bacterial carbon production
-bishomohopanol
-bromide
-calcium
-carbon/nitrogen ratio carbon/nitrogen ratio
-chloride  
-chlorophyll   
-density   
-diether lipids    
-dissolved carbon dioxide  
-dissolved hydrogen    
-dissolved inorganic carbon    
-dissolved organic carbon  
-dissolved organic nitrogen    
-dissolved oxygen  
-glucosidase activity  
-magnesium 
-mean friction velocity    
-mean peak friction velocity   
-n-alkanes 
-nitrite   
-nitrogen  
-organic carbon    total organic carbon
-organic matter    organic matter
-organic nitrogen  organic nitrogen
-particulate organic carbon    
-petroleum hydrocarbon 
-phaeopigments 
-phospholipid fatty acid   
-potassium 
-pressure  
-redox potential   
-silicate  
-sulfate   
-sulfide   
-tidal stage   
-total depth of water column   
-turbidity 
-salinity  salinity
-salinity method   salinity method
-alkalinity    
-alkalinity method 
-nitrate   
-phosphate phosphate
-sodium    
-atmospheric data  
-bacterial production  
-bacterial respiration 
-conductivity  
-dissolved inorganic nitrogen  
-Concentration of dissolved inorganic phosphorus in the sample 
-downward PAR  
-fluorescence  
-light intensity   
-particulate organic nitrogen  
-photon flux   
-primary production    
-soluble reactive phosphorus   
-suspended particulate matter  
-total dissolved nitrogen  
-total inorganic nitrogen  
-total nitrogen concentration  
-total particulate carbon  
-total phosphorus  total phosphorus
-water current 
-size-fraction lower threshold size-fraction lower threshold
-size-fraction upper threshold size-fraction upper threshold
-methane   
-particle classification
-porosity
-sediment type
-total carbon  total carbon
-water content water content
-water content method  water content method
-microbial biomass microbial biomass
-microbial biomass method  microbial biomass method
-microbial biomass carbon  microbial biomass carbon
-microbial biomass carbon method   microbial biomass carbon method
-microbial biomass nitrogen    microbial biomass nitrogen
-microbial biomass nitrogen method microbial biomass nitrogen method
-organic nitrogen method   organic nitrogen method
-history/extreme events    history/agrochemical additions
-history/fire  history/fire
-history/flooding  history/flooding
-total nitrogen content    total nitrogen content
-total nitrogen content method total nitrogen content method
-total organic carbon method   total organic carbon method
-total organic carbon  total organic carbon
-history/agrochemical additions    history/agrochemical additions
-extreme_unusual_properties/Al saturation  extreme_unusual_properties/Al saturation
-extreme_unusual_properties/Al saturation method   extreme_unusual_properties/Al saturation method
-mean annual precipitation mean annual precipitation
-mean annual temperature   mean annual temperature
-history/crop rotation history/crop rotation
-current land use  current land use
-current vegetation    current vegetation
-current vegetation method current vegetation method
-drainage classification   drainage classification
-soil_taxonomic/FAO classification soil_taxonomic/FAO classification
-extreme_unusual_properties/heavy metals   extreme_unusual_properties/heavy metals
-extreme_unusual_properties/heavy metals method    extreme_unusual_properties/heavy metals method
-horizon   soil horizon
-horizon method    horizon method
-links to additional analysis  
-link to classification information    link to classification information
-link to climate information   link to climate information
-soil_taxonomic/local classification   soil_taxonomic/local classification
-soil_taxonomic/local classification method    soil_taxonomic/local classification method
-history/previous land use history/previous land use
-history/previous land use method  history/previous land use method
-profile position  profile position
-mean seasonal precipitation   mean seasonal precipitation
-mean seasonal temperature mean seasonal temperature
-slope aspect  slope aspect
-slope gradient    slope gradient
-soil type soil type
-soil type method  soil type method
-texture   soil texture measurement
-texture method    soil texture method
-history/tillage   history/tillage
-biochemical oxygen demand 
-chemical oxygen demand    
-efficiency percent    
-emulsions 
-gaseous substances    
-industrial effluent percent   
-inorganic particles   
-organic particles 
-pre-treatment 
-primary treatment 
-reactor type  
-secondary treatment   
-sewage type   
-sludge retention time 
-soluble inorganic material    
-soluble organic material  
-suspended solids  
-tertiary treatment    
-total phosphate   phosphate
-wastewater type   
+non-microbial biomass method	non-microbial biomass method
+observed biotic relationship	observed biotic relationship
+encoded traits	
+host specificity or range	
+known pathogenicity	
+propagation	
+reference for biomaterial	
+specific host	
+subspecific genetic lineage 
+trophic level	
+ancestral data	
+antibiotic regimen	
+biological status	
+chemical mutagen	
+culture rooting medium	
+fertilizer regimen	
+fungicide regimen	
+genetic modification	
+gravity	
+growth habit	
+growth hormone regimen	
+herbicide regimen	
+host age	
+host disease status	
+host dry mass	
+host genotype	
+host height	
+host infra-specific name	
+host infra-specific rank	
+host length	
+host life stage	
+host phenotype	
+observed host symbionts	
+host total mass	
+host wet mass	
+mechanical damage	 
+mineral nutrient regimen	
+non-mineral nutrient regimen	
+pesticide regimen	
+pH regimen	
+plant growth medium	
+plant product	 
+plant sex	
+radiation regimen	
+rainfall regimen	
+rooting conditions	 
+rooting medium carbon	
+rooting medium macronutrients	
+rooting medium micronutrients	
+rooting medium pH	
+rooting medium regulators	
+rooting medium solidifier	
+rooting medium organic supplements	
+salt regimen	
+sample capture status	
+other sample capture status	
+sample disease stage	
+other sample disease stage	 
+seasonal environment	
+standing water regimen	
+tissue culture growth media	
+water temperature regimen	
+miscellaneous parameter	miscellaneous parameter
+organism count	
+perturbation	
+temperature	temperature
+pH	pH
+pH method	pH method
+alkyl diethers	
+aminopeptidase activity	
+ammonium	
+bacterial carbon production	
+bishomohopanol	
+bromide	
+calcium	
+carbon/nitrogen ratio	carbon/nitrogen ratio
+chloride	
+chlorophyll	
+density	
+diether lipids	
+dissolved carbon dioxide	
+dissolved hydrogen	
+dissolved inorganic carbon	
+dissolved organic carbon	
+dissolved organic nitrogen	
+dissolved oxygen	
+glucosidase activity	
+magnesium	
+mean friction velocity	
+mean peak friction velocity	
+n-alkanes	
+nitrite	
+nitrogen	
+organic carbon	total organic carbon
+organic matter	organic matter
+organic nitrogen	organic nitrogen
+particulate organic carbon	 
+petroleum hydrocarbon	
+phaeopigments	
+phospholipid fatty acid	
+potassium	 
+pressure	
+redox potential	
+silicate	
+sulfate	
+sulfide	
+tidal stage	
+total depth of water column	
+turbidity	
+salinity	salinity	
+salinity method	salinity method
+alkalinity	
+alkalinity method	
+nitrate	
+phosphate phosphate	
+sodium	
+atmospheric data	
+bacterial production	
+bacterial respiration	
+conductivity	
+dissolved inorganic nitrogen	
+Concentration of dissolved inorganic phosphorus in the sample	
+downward PAR	
+fluorescence	
+light intensity	
+particulate organic nitrogen	
+photon flux	
+primary production	
+soluble reactive phosphorus	
+suspended particulate matter	
+total dissolved nitrogen	
+total inorganic nitrogen	
+total nitrogen concentration	
+total particulate carbon	
+total phosphorus	total phosphorus
+water current	
+size-fraction lower threshold	size-fraction lower threshold
+size-fraction upper threshold	size-fraction upper threshold
+methane	
+particle classification	
+porosity	
+sediment type	
+total carbon	total carbon
+water content	water content
+water content method	water content method
+microbial biomass	microbial biomass
+microbial biomass method	microbial biomass method
+microbial biomass carbon	microbial biomass carbon
+microbial biomass carbon method	microbial biomass carbon method
+microbial biomass nitrogen	microbial biomass nitrogen
+microbial biomass nitrogen method	microbial biomass nitrogen method	
+organic nitrogen method	organic nitrogen method
+history/extreme events	history/agrochemical additions
+history/fire	history/fire
+history/flooding	history/flooding
+total nitrogen content	total nitrogen content
+total nitrogen content method	total nitrogen content method
+total organic carbon method	total organic carbon method
+total organic carbon	total organic carbon
+history/agrochemical additions	 history/agrochemical additions
+extreme_unusual_properties/Al saturation	extreme_unusual_properties/Al saturation
+extreme_unusual_properties/Al saturation method	extreme_unusual_properties/Al saturation method
+mean annual precipitation	mean annual precipitation
+mean annual temperature	mean annual temperature
+history/crop rotation	history/crop rotation
+current land use	current land use
+current vegetation	current vegetation
+current vegetation method	current vegetation method
+drainage classification	drainage classification
+soil_taxonomic/FAO classification	soil_taxonomic/FAO classification
+extreme_unusual_properties/heavy metals	extreme_unusual_properties/heavy metals
+extreme_unusual_properties/heavy metals method	 extreme_unusual_properties/heavy metals method
+horizon	soil horizon
+horizon method	horizon method
+links to additional analysis	
+link to classification information	link to classification information
+link to climate information	link to climate information
+soil_taxonomic/local classification	soil_taxonomic/local classification
+soil_taxonomic/local classification method	 soil_taxonomic/local classification method
+history/previous land use	history/previous land use
+history/previous land use method	history/previous land use method
+profile position	profile position
+mean seasonal precipitation	mean seasonal precipitation
+mean seasonal temperature	mean seasonal temperature
+slope aspect	slope aspect
+slope gradient	slope gradient
+soil type soil type	
+soil type method	soil type method
+texture	soil texture measurement
+texture method	 soil texture method
+history/tillage	history/tillage
+biochemical oxygen demand	
+chemical oxygen demand	 
+efficiency percent	 
+emulsions	
+gaseous substances	
+industrial effluent percent	
+inorganic particles	
+organic particles	
+pre-treatment	
+primary treatment	
+reactor type	
+secondary treatment	
+sewage type	
+sludge retention time	
+soluble inorganic material	 
+soluble organic material	
+suspended solids	
+tertiary treatment	
+total phosphate	phosphate
+wastewater type	
