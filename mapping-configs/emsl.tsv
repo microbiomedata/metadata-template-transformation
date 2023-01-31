@@ -1,10 +1,11 @@
+emsl_field	sub_port_field
 GUID Source	
 Other GUID Source	
 Unique ID	globally unique ID
 Sample Name	sample name
 Analysis/Data Type	analysis/data type
 Number Technical Replicate	number technical replicate
-Replicate Number	replicate
+Replicate Number	replicate number
 Source Material ID	
 sample linkage	sample linkage
 Growth Facility	growth facility
@@ -16,7 +17,7 @@ Other Storage Condition
 Storage temperature	EMSL sample storage temperature, deg. C
 Other Storage temperature	sample storage temperature
 Geographical Location Name	geographic location (country and/or sea,region)
-latitude, longitude	 geographic location (latitude and longitude)
+latitude, longitude	geographic location (latitude and longitude)
 elevation-meters	elevation
 Material Processing	sample material processing
 sample collection method	sample collection method
@@ -45,12 +46,12 @@ other treatments	other treatments
 Extraction method	DNA isolation method
 Method Test	
 altitude-meters	altitude
-Other
+Other	
 amount or size of sample collected	amount or size of sample collected
 experimental factor	experimental factor
 experimental factor- other	experimental factor- other
 relationship to oxygen	relationship to oxygen
-non microbial biomass non-microbial biomass
+non microbial biomass	non-microbial biomass
 non-microbial biomass method	non-microbial biomass method
 observed biotic relationship	observed biotic relationship
 encoded traits	
@@ -59,7 +60,7 @@ known pathogenicity
 propagation	
 reference for biomaterial	
 specific host	
-subspecific genetic lineage 
+subspecific genetic lineage	
 trophic level	
 ancestral data	
 antibiotic regimen	
@@ -86,17 +87,17 @@ host phenotype
 observed host symbionts	
 host total mass	
 host wet mass	
-mechanical damage	 
+mechanical damage	
 mineral nutrient regimen	
 non-mineral nutrient regimen	
 pesticide regimen	
 pH regimen	
 plant growth medium	
-plant product	 
+plant product	
 plant sex	
 radiation regimen	
 rainfall regimen	
-rooting conditions	 
+rooting conditions	
 rooting medium carbon	
 rooting medium macronutrients	
 rooting medium micronutrients	
@@ -108,7 +109,7 @@ salt regimen
 sample capture status	
 other sample capture status	
 sample disease stage	
-other sample disease stage	 
+other sample disease stage	
 seasonal environment	
 standing water regimen	
 tissue culture growth media	
@@ -147,11 +148,11 @@ nitrogen
 organic carbon	total organic carbon
 organic matter	organic matter
 organic nitrogen	organic nitrogen
-particulate organic carbon	 
+particulate organic carbon	
 petroleum hydrocarbon	
 phaeopigments	
 phospholipid fatty acid	
-potassium	 
+potassium	
 pressure	
 redox potential	
 silicate	
@@ -165,7 +166,7 @@ salinity method	salinity method
 alkalinity	
 alkalinity method	
 nitrate	
-phosphate phosphate	
+phosphate	phosphate
 sodium	
 atmospheric data	
 bacterial production	
@@ -210,7 +211,7 @@ total nitrogen content	total nitrogen content
 total nitrogen content method	total nitrogen content method
 total organic carbon method	total organic carbon method
 total organic carbon	total organic carbon
-history/agrochemical additions	 history/agrochemical additions
+history/agrochemical additions	history/agrochemical additions
 extreme_unusual_properties/Al saturation	extreme_unusual_properties/Al saturation
 extreme_unusual_properties/Al saturation method	extreme_unusual_properties/Al saturation method
 mean annual precipitation	mean annual precipitation
@@ -222,14 +223,14 @@ current vegetation method	current vegetation method
 drainage classification	drainage classification
 soil_taxonomic/FAO classification	soil_taxonomic/FAO classification
 extreme_unusual_properties/heavy metals	extreme_unusual_properties/heavy metals
-extreme_unusual_properties/heavy metals method	 extreme_unusual_properties/heavy metals method
+extreme_unusual_properties/heavy metals method	extreme_unusual_properties/heavy metals method
 horizon	soil horizon
 horizon method	horizon method
 links to additional analysis	
 link to classification information	link to classification information
 link to climate information	link to climate information
 soil_taxonomic/local classification	soil_taxonomic/local classification
-soil_taxonomic/local classification method	 soil_taxonomic/local classification method
+soil_taxonomic/local classification method	soil_taxonomic/local classification method
 history/previous land use	history/previous land use
 history/previous land use method	history/previous land use method
 profile position	profile position
@@ -237,14 +238,14 @@ mean seasonal precipitation	mean seasonal precipitation
 mean seasonal temperature	mean seasonal temperature
 slope aspect	slope aspect
 slope gradient	slope gradient
-soil type soil type	
+soil type	soil type	
 soil type method	soil type method
 texture	soil texture measurement
-texture method	 soil texture method
+texture method	soil texture method
 history/tillage	history/tillage
 biochemical oxygen demand	
-chemical oxygen demand	 
-efficiency percent	 
+chemical oxygen demand	
+efficiency percent	
 emulsions	
 gaseous substances	
 industrial effluent percent	
@@ -256,7 +257,7 @@ reactor type
 secondary treatment	
 sewage type	
 sludge retention time	
-soluble inorganic material	 
+soluble inorganic material	
 soluble organic material	
 suspended solids	
 tertiary treatment	
