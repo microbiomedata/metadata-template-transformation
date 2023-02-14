@@ -1,0 +1,35 @@
+user_facility_field	sub_port_field
+Seq Project ID (No edit)	
+Seq Project Name (No edit)	
+Sample ID (No edit)	
+Source Sample GUID	globally unique ID
+Sample Name*	sample name
+Biological replicate/sample group Name* (required for RNA expression, ChIP, Bisulphite-Seq, Methylation)	replicate number
+Isotope Label* (required for Stable Isotope Probing samples)	
+Concentration* (ng/ul)	DNA concentration in ng/ul
+Volume* (ul)	DNA volume in ul
+Absorbance 260/280* (required for metagenome improved drafts or any PacBio libraries)	DNA absorbance 260/280
+Absorbance 260/230* (required for metagenome improved drafts or any PacBio libraries)	DNA absorbance 260/230
+Tube or Plate Label*	DNA container type
+Sample Container*	DNA container label
+Plate location (well #)* required if samples provided in a plate	DNA well number
+Sample Format*	DNA sample format
+Was Sample DNAse treated?*	DNase treatment DNA
+Known / Suspected Organisms	DNA expected organisms
+Biosafety Material Category*	ecosystem
+Sample Isolation Method*	DNA isolation method
+Collection Year*	collection date
+Collection Month*	collection date
+Collection Day*	collection date
+Sample Isolated From*	specific_ecosystem
+Collection Site or Growth Conditions* (required for RNA samples)	DNA collection site
+Latitude*	geographic location (latitude and longitude)
+Longitude*	geographic location (latitude and longitude)
+Depth* (in meters) or minimum depth if a range	depth, meters
+Maximum depth (in meters) if a range	elevation
+Elevation* (in meters) or minimum elevation if a range	
+Maximum elevation (in meters) if a range	
+Country*	geographic location (country and/or sea,region)
+Seq Project PI Name (No edit)	DNA seq project PI
+Seq Project Sample Contact Name (No edit)	
+Proposal ID (No edit)	DNA proposal ID
