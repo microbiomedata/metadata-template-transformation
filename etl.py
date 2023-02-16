@@ -1,10 +1,54 @@
 import pandas as pd
 import csv
+import os
 import json
 import warnings
 import click
+import dotenv
+import requests
 
 warnings.filterwarnings("ignore", category=UserWarning, module="openpyxl")
+
+
+def load_dotenv():
+    env_path = dotenv.find_dotenv()
+    if len(env_path) > 0:
+        dotenv.load_dotenv(dotenv_path=env_path, override=True)
+
+
+def retrieve_metadata_records(metadata_submission_id: str = None):
+    env = dict(os.environ)
+    if metadata_submission_id:
+        response = requests.request(
+            "GET",
+            f"https://data.microbiomedata.org/api/metadata_submission/{metadata_submission_id}",
+            cookies={"session": env["DATA_PORTAL_COOKIE"]},
+        ).json()
+    else:
+        response = requests.request(
+            "GET",
+            "https://data.microbiomedata.org/api/metadata_submission/",
+            cookies={"session": env["DATA_PORTAL_COOKIE"]},
+        ).json()["results"]
+
+    if isinstance(response, dict):
+        if "sampleData" in response:
+            table = response["sampleData"]
+            if table and len(table) > 2:
+                df = pd.DataFrame(table[2:], columns=table[1])
+                return df
+    elif isinstance(response, list):
+        metadata_dfs = []
+        for metadata in response:
+            for _, metadata_submission_v in metadata.items():
+                if isinstance(metadata_submission_v, dict):
+                    if "sampleData" in metadata_submission_v:
+                        table = metadata_submission_v["sampleData"]
+                        if table and len(table) > 2:
+                            df = pd.DataFrame(table[2:], columns=table[1])
+                            metadata_dfs.append(df)
+
+        return metadata_dfs
 
 
 def user_facility_config_dict(user_facility_config_path):
@@ -22,9 +66,11 @@ def user_facility_sub_port_etl(user_facility_sub_port, sub_port_df, user_facilit
     for user_facility_header, user_facility_row in user_facility_dict.items():
         if user_facility_sub_port[user_facility_header]:
             user_facility_row = user_facility_dict[user_facility_header]
-            sub_port_dict = sub_port_df[
-                user_facility_sub_port[user_facility_header]
-            ].to_dict()
+
+            if user_facility_sub_port[user_facility_header] in sub_port_df:
+                sub_port_dict = sub_port_df[
+                    user_facility_sub_port[user_facility_header]
+                ].to_dict()
 
             if user_facility_row:
                 if "header" in user_facility_row:
@@ -49,15 +95,36 @@ def user_facility_sub_port_df(user_facility_dict):
     return user_facility_sub_port_merged_df
 
 
-@click.option("--input", "-i", help="Path to submission portal TSV export.")
+@click.option("--submission", "-s", help="Metadata submission id.")
+@click.option(
+    "--input",
+    "-i",
+    type=click.Path(exists=True),
+    help="Path to submission portal TSV export.",
+)
 @click.option(
     "--header", "-h", help="Path to user facility template headers JSON file."
 )
-@click.option("--mapper", "-m", help="Path to user facility specific TSV file.")
-@click.option("--output", "-o", help="Path to result output XLSX file")
+@click.option(
+    "--mapper",
+    "-m",
+    type=click.Path(exists=True),
+    help="Path to user facility specific TSV file.",
+)
+@click.option(
+    "--output", "-o", type=click.Path(), help="Path to result output XLSX file."
+)
 @click.command()
-def cli(input, header, mapper, output):
-    sub_port_df = pd.read_csv(input, delimiter="\t", header=1)
+def cli(submission, input, header, mapper, output):
+    """Convert submission portal metadata to a DOE user facility specific format."""
+    load_dotenv()
+
+    if submission:
+        sub_port_df = retrieve_metadata_records(submission)
+    elif input:
+        sub_port_df = pd.read_csv(input, delimiter="\t", header=1)
+    else:
+        raise ValueError("Either --submission or --input arguments must be provided.")
 
     user_facility_sub_port = user_facility_config_dict(mapper)
 
@@ -74,6 +141,10 @@ def cli(input, header, mapper, output):
     user_facility_sub_port_updated = user_facility_sub_port_etl(
         user_facility_sub_port, sub_port_df, user_facility_dict
     )
+
+    for _, v in user_facility_dict.items():
+        if "header" in v:
+            del v["header"]
 
     user_facility_dict.update(user_facility_sub_port_updated)
 
