@@ -32,11 +32,13 @@ def retrieve_metadata_records(metadata_submission_id: str = None):
         ).json()["results"]
 
     if isinstance(response, dict):
-        if "sampleData" in response:
-            table = response["sampleData"]
+        if "sampleData" in response["metadata_submission"] and response["metadata_submission"]["sampleData"]:
+            table = response["metadata_submission"]["sampleData"]
             if table and len(table) > 2:
                 df = pd.DataFrame(table[2:], columns=table[1])
                 return df
+        else:
+            raise ValueError(f"The Submission Metadata record: {metadata_submission_id} is empty.")
     elif isinstance(response, list):
         metadata_dfs = []
         for metadata in response:
@@ -103,16 +105,23 @@ def user_facility_sub_port_df(user_facility_dict):
     help="Path to submission portal TSV export.",
 )
 @click.option(
-    "--header", "-h", help="Path to user facility template headers JSON file."
+    "--header",
+    "-h",
+    required=True,
+    help="Path to user facility template headers JSON file.",
 )
 @click.option(
     "--mapper",
     "-m",
+    required=True,
     type=click.Path(exists=True),
     help="Path to user facility specific TSV file.",
 )
 @click.option(
-    "--output", "-o", type=click.Path(), help="Path to result output XLSX file."
+    "--output",
+    "-o",
+    required=True,
+    help="Path to result output XLSX file.",
 )
 @click.command()
 def cli(submission, input, header, mapper, output):
@@ -125,7 +134,7 @@ def cli(submission, input, header, mapper, output):
         sub_port_df = pd.read_csv(input, delimiter="\t", header=1)
     else:
         raise ValueError("Either --submission or --input arguments must be provided.")
-
+        
     user_facility_sub_port = user_facility_config_dict(mapper)
 
     with open(header, encoding="utf-8") as f:
