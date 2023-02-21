@@ -1,0 +1,104 @@
+{
+    "Seq Project ID (No edit)":  {
+        "1": "Prefilled"
+    },
+    "Seq Project Name (No edit)":  {
+        "1": "Prefilled"
+    },
+    "Sample ID (No edit)": {
+        "1": "Prefilled"
+    },
+    "Source Sample GUID": {
+        "1": "List the sample's Globally Unique Identifier, if available. More details are available on the \"instructions\" tab."
+    },
+    "Sample Name*": {
+        "1": "Give the sample a name that is meaningful to you. Sample names must be unique across all JGI projects and contain ASCII characters only."
+    },
+    "Biological replicate/sample group Name* (required for RNA expression, ChIP, Bisulphite-Seq, Methylation)": {
+        "1": "Samples that are biological replicates should have the same group name.  If your project does not contain biological replicates, give each sample its own group name."
+    },
+    "Isotope Label* (required for Stable Isotope Probing samples)": {
+        "1": "Choose from the following: C13, N15, O18, Unlabeled "
+    },
+    "Concentration* (ng/ul)": {
+        "1": "Must be calculated using a fluorometric method; value >0 and <2000."
+    },
+    "Volume* (ul)": {
+        "1": "Value must be >0 and <1000 (values <25 by special permission only)."
+    },
+    "Absorbance 260/280* (required for metagenome improved drafts or any PacBio libraries)": {
+        "1": "Recommended value is between 1 and 3."
+    },
+    "Absorbance 260/230* (required for metagenome improved drafts or any PacBio libraries)": {
+        "1": "Recommended value is between 1 and 3."
+    },
+    "Tube or Plate Label*": {
+        "1": "Must be unique across all tubes and plates, and <20 characters. All samples in a plate should have the same plate label."
+    },
+    "Sample Container*": {
+        "1": "tube or plate (96-well)"
+    },
+    "Plate location (well #)* required if samples provided in a plate": {
+        "1": "Corner wells must be blank. For partial plates, fill by columns. Leave blank if the sample will be shipped in a tube."
+    },
+    "Sample Format*": {
+        "1": "Choose from the following: Pellet, RNAStable, DNAStable, Ethanol, MDA reaction buffer, PBS, TE, Water, Low EDTA TE, 10 mM Tris-HCl, Gentegra-DNA"
+    },
+    "Was Sample DNAse treated?*": {
+        "1": "Y/N.  Note DNAse treatment is required for all RNA samples."
+    },
+    "Known / Suspected Organisms": {
+        "1": "List any organisms known or suspected to grow in co-culture, as well as estimated % of the organism in that culture."
+    },
+    "Biosafety Material Category*": {
+        "1": "Metagenome (Environmental) or Metagenome (Host-associated)"
+    },
+    "Sample Isolation Method*": {
+        "1": "Describe the method/protocol/kit used to extract DNA/RNA."
+    },
+    "Collection Year*": {
+        "1": "Year in which the sample was collected. "
+    },
+    "Collection Month*": {
+        "1": "Month in which the sample was collected. Use the full name of the month."
+    },
+    "Collection Day*": {
+        "1": "Day on which the sample was collected."
+    },
+    "Sample Isolated From*": {
+        "1": "Describe where the sample originated."
+    },
+    "Collection Site or Growth Conditions* (required for RNA samples)": {
+        "1": "Provide information on the specific tissue type or growth conditions. "
+    },
+    "Latitude*": {
+        "1": "Latitude of sample collection. Value must be numeric only and between -90 and 90."
+    },
+    "Longitude*": {
+        "1": "Longitude of sample collection. Value must be numeric only and between -180 and 180."
+    },
+    "Depth* (in meters) or minimum depth if a range": {
+        "1": "Depth below the surface. If the sample was collected from a range of depths, indicate the shallowest depth. Value must be numeric and 0 or greater."
+    },
+    "Maximum depth (in meters) if a range": {
+        "1": "If the sample was collected from a range of depths, indicate the maximum depth below the surface. Value must be numeric and >0."
+    },
+    "Elevation* (in meters) or minimum elevation if a range": {
+        "1": "Elevation (from sea level) of sample collection. If the sample was collected from a range of elevations, indicate the elevation nearest to sea level.Value must be numeric and can be either positive or negative. "
+    },
+    "Maximum elevation (in meters) if a range": {
+        "1": "If the sample was collected from a range of elevations, indicate the elevation farthest from sea level. Value must be numeric and can be either positive or negative."
+    },
+    "Country*": {
+        "1": "Country or ocean where the sample was collected."
+    },
+    "Seq Project PI Name (No edit)": {
+        "1": "Prefilled"
+    },
+    "Seq Project Sample Contact Name (No edit)": {
+        "1": "Prefilled"
+    },
+    "Proposal ID (No edit)": {
+        "1": "Prefilled"
+    }
+}

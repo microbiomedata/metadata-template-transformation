@@ -74,6 +74,8 @@ def user_facility_sub_port_etl(user_facility_sub_port, sub_port_df, user_facilit
                     user_facility_sub_port[user_facility_header]
                 ].to_dict()
 
+            print(user_facility_sub_port)
+
             if user_facility_row:
                 if "header" in user_facility_row:
                     del user_facility_row["header"]
@@ -97,7 +99,7 @@ def user_facility_sub_port_df(user_facility_dict):
     return user_facility_sub_port_merged_df
 
 
-@click.option("--submission", "-s", help="Metadata submission id.")
+@click.option("--submission", "-s", required=True, help="Metadata submission id.")
 @click.option(
     "--input",
     "-i",
