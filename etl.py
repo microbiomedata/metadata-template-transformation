@@ -74,8 +74,6 @@ def user_facility_sub_port_etl(user_facility_sub_port, sub_port_df, user_facilit
                     user_facility_sub_port[user_facility_header]
                 ].to_dict()
 
-            print(user_facility_sub_port)
-
             if user_facility_row:
                 if "header" in user_facility_row:
                     del user_facility_row["header"]
@@ -160,10 +158,14 @@ def cli(submission, input, header, mapper, output):
     user_facility_dict.update(user_facility_sub_port_updated)
 
     user_facility_sub_port_merged_df = user_facility_sub_port_df(user_facility_dict)
+    
+    if all('' == s or s.isspace() for s in user_facility_cols):
+        user_facility_sub_port_merged_df.columns = user_facility_sub_port_merged_df.iloc[0]
+        user_facility_sub_port_merged_df = user_facility_sub_port_merged_df.iloc[1:,:]
+    else:
+        user_facility_sub_port_merged_df.columns = user_facility_cols
 
-    user_facility_sub_port_merged_df.columns = user_facility_cols
-
-    user_facility_sub_port_merged_df.to_excel(output, index=False)
+    user_facility_sub_port_merged_df.to_excel(output, index=False, header=1)
 
 
 if __name__ == "__main__":
