@@ -1,5 +1,4 @@
 import pandas as pd
-import csv
 import os
 import json
 import warnings
@@ -16,100 +15,69 @@ def load_dotenv():
         dotenv.load_dotenv(dotenv_path=env_path, override=True)
 
 
-def retrieve_metadata_records(metadata_submission_id: str = None):
+def retrieve_metadata_records(metadata_submission_id: str) -> pd.DataFrame:
     env = dict(os.environ)
-    if metadata_submission_id:
-        response = requests.request(
-            "GET",
-            f"https://data.microbiomedata.org/api/metadata_submission/{metadata_submission_id}",
-            cookies={"session": env["DATA_PORTAL_COOKIE"]},
-        ).json()
+    response = requests.request(
+        "GET",
+        f"https://data.microbiomedata.org/api/metadata_submission/{metadata_submission_id}",
+        cookies={"session": env["DATA_PORTAL_COOKIE"]},
+    ).json()
+
+    if "soil_data" in response["metadata_submission"]["sampleData"]:
+        soil_data = response["metadata_submission"]["sampleData"]["soil_data"]
+        df = pd.DataFrame(soil_data)
+
+        return df
     else:
-        response = requests.request(
-            "GET",
-            "https://data.microbiomedata.org/api/metadata_submission/",
-            cookies={"session": env["DATA_PORTAL_COOKIE"]},
-        ).json()["results"]
-
-    if isinstance(response, dict):
-        if "sampleData" in response["metadata_submission"] and response["metadata_submission"]["sampleData"]:
-            table = response["metadata_submission"]["sampleData"]
-            if table and len(table) > 2:
-                df = pd.DataFrame(table[2:], columns=table[1])
-                return df
-        else:
-            raise ValueError(f"The Submission Metadata record: {metadata_submission_id} is empty.")
-    elif isinstance(response, list):
-        metadata_dfs = []
-        for metadata in response:
-            for _, metadata_submission_v in metadata.items():
-                if isinstance(metadata_submission_v, dict):
-                    if "sampleData" in metadata_submission_v:
-                        table = metadata_submission_v["sampleData"]
-                        if table and len(table) > 2:
-                            df = pd.DataFrame(table[2:], columns=table[1])
-                            metadata_dfs.append(df)
-
-        return metadata_dfs
+        raise ValueError(
+            f"The soil data in submission metadata record: {metadata_submission_id} is empty."
+        )
 
 
-def user_facility_config_dict(user_facility_config_path):
-    user_facility_sub_port = {}
-    with open(user_facility_config_path, newline="\n") as csv_f:
-        for row in csv.DictReader(csv_f, delimiter="\t"):
-            user_facility_sub_port[row["user_facility_field"]] = row["sub_port_field"]
+def combine_headers_df(json_mapper: dict) -> pd.DataFrame:
+    d = {}
+    for k, v in json_mapper.items():
+        l = list()
+        for h_n, h in v.items():
+            if h_n != "sub_port_mapping":
+                l.append(h)
+        d[k] = l
+    headers_df = pd.DataFrame(d)
 
-    return user_facility_sub_port
+    last_row = headers_df.iloc[-1]
+    column_values = list(last_row)
 
+    headers_df = headers_df.drop(headers_df.index[-1])
+    headers_df.loc[len(headers_df)] = headers_df.columns.to_list()
+    headers_df.columns = column_values
 
-def user_facility_sub_port_etl(user_facility_sub_port, sub_port_df, user_facility_dict):
-    user_facility_dict_new_values = {}
-
-    for user_facility_header, user_facility_row in user_facility_dict.items():
-        if user_facility_sub_port[user_facility_header]:
-            user_facility_row = user_facility_dict[user_facility_header]
-
-            if user_facility_sub_port[user_facility_header] in sub_port_df:
-                sub_port_dict = sub_port_df[
-                    user_facility_sub_port[user_facility_header]
-                ].to_dict()
-
-            if user_facility_row:
-                if "header" in user_facility_row:
-                    del user_facility_row["header"]
-
-                key_max_cnt = int(max(user_facility_row, key=int)) + int(1)
-            else:
-                key_max_cnt = 0
-            for sub_port_header, sub_port_values in sub_port_dict.items():
-                user_facility_row[key_max_cnt + sub_port_header] = sub_port_values
-            user_facility_dict_new_values[user_facility_header] = user_facility_row
-
-    return user_facility_dict_new_values
-
-
-def user_facility_sub_port_df(user_facility_dict):
-    user_facility_sub_port_merged_df = pd.DataFrame(user_facility_dict)
-    user_facility_sub_port_merged_df = (
-        user_facility_sub_port_merged_df.T.reset_index().T.reset_index(drop=True)
+    shift = 1
+    headers_df = pd.concat(
+        [headers_df.iloc[-shift:], headers_df.iloc[:-shift]], ignore_index=True
     )
 
-    return user_facility_sub_port_merged_df
+    return headers_df
+
+
+def combine_sample_rows_df(df: pd.DataFrame, json_mapper: dict) -> pd.DataFrame:
+    rows_df = pd.DataFrame()
+    for _, v in json_mapper.items():
+        if (
+            "sub_port_mapping" in v
+            and v["sub_port_mapping"] in df.columns.to_list()
+            and "header" in v
+        ):
+            rows_df[v["header"]] = df[v["sub_port_mapping"]]
+    return rows_df
+
+
+def combine_headers_and_rows(
+    headers_df: pd.DataFrame, rows_df: pd.DataFrame
+) -> pd.DataFrame:
+    return pd.concat([headers_df, rows_df])
 
 
 @click.option("--submission", "-s", required=True, help="Metadata submission id.")
-@click.option(
-    "--input",
-    "-i",
-    type=click.Path(exists=True),
-    help="Path to submission portal TSV export.",
-)
-@click.option(
-    "--header",
-    "-h",
-    required=True,
-    help="Path to user facility template headers JSON file.",
-)
 @click.option(
     "--mapper",
     "-m",
@@ -124,48 +92,17 @@ def user_facility_sub_port_df(user_facility_dict):
     help="Path to result output XLSX file.",
 )
 @click.command()
-def cli(submission, input, header, mapper, output):
-    """Convert submission portal metadata to a DOE user facility specific format."""
+def cli(submission, mapper, output):
     load_dotenv()
+    metadata_submission = retrieve_metadata_records(submission)
 
-    if submission:
-        sub_port_df = retrieve_metadata_records(submission)
-    elif input:
-        sub_port_df = pd.read_csv(input, delimiter="\t", header=1)
-    else:
-        raise ValueError("Either --submission or --input arguments must be provided.")
-        
-    user_facility_sub_port = user_facility_config_dict(mapper)
+    with open(mapper, "r") as f:
+        json_mapper = json.load(f)
 
-    with open(header, encoding="utf-8") as f:
-        user_facility_dict = json.load(f)
-
-    user_facility_cols = []
-    for _, v in user_facility_dict.items():
-        if "header" in v:
-            user_facility_cols.append(v["header"])
-        else:
-            user_facility_cols.append("")
-
-    user_facility_sub_port_updated = user_facility_sub_port_etl(
-        user_facility_sub_port, sub_port_df, user_facility_dict
-    )
-
-    for _, v in user_facility_dict.items():
-        if "header" in v:
-            del v["header"]
-
-    user_facility_dict.update(user_facility_sub_port_updated)
-
-    user_facility_sub_port_merged_df = user_facility_sub_port_df(user_facility_dict)
-    
-    if all('' == s or s.isspace() for s in user_facility_cols):
-        user_facility_sub_port_merged_df.columns = user_facility_sub_port_merged_df.iloc[0]
-        user_facility_sub_port_merged_df = user_facility_sub_port_merged_df.iloc[1:,:]
-    else:
-        user_facility_sub_port_merged_df.columns = user_facility_cols
-
-    user_facility_sub_port_merged_df.to_excel(output, index=False, header=1)
+    headers_df = combine_headers_df(json_mapper)
+    rows_df = combine_sample_rows_df(metadata_submission, json_mapper)
+    user_facility_spreadsheet = combine_headers_and_rows(headers_df, rows_df)
+    user_facility_spreadsheet.to_excel(output, index=False)
 
 
 if __name__ == "__main__":
