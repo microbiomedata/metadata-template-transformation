@@ -1,35 +1,32 @@
-user_facility_field	sub_port_field
-Seq Project ID (No edit)	
-Seq Project Name (No edit)	
-Sample ID (No edit)	
-Source Sample GUID	globally unique ID
-Sample Name*	sample name
-Biological replicate/sample group Name* (required for RNA expression, ChIP, Bisulphite-Seq, Methylation)	replicate number
-Isotope Label* (required for Stable Isotope Probing samples)	
-Concentration* (ng/ul)	DNA concentration in ng/ul
-Volume* (ul)	DNA volume in ul
-Absorbance 260/280* (required for metagenome improved drafts or any PacBio libraries)	DNA absorbance 260/280
-Absorbance 260/230* (required for metagenome improved drafts or any PacBio libraries)	DNA absorbance 260/230
-Tube or Plate Label*	DNA container type
-Sample Container*	DNA container label
-Plate location (well #)* required if samples provided in a plate	DNA well number
-Sample Format*	DNA sample format
-Was Sample DNAse treated?*	DNase treatment DNA
-Known / Suspected Organisms	DNA expected organisms
-Biosafety Material Category*	ecosystem
-Sample Isolation Method*	DNA isolation method
-Collection Year*	collection date
-Collection Month*	collection date
-Collection Day*	collection date
-Sample Isolated From*	specific_ecosystem
-Collection Site or Growth Conditions* (required for RNA samples)	DNA collection site
-Latitude*	geographic location (latitude and longitude)
-Longitude*	geographic location (latitude and longitude)
-Depth* (in meters) or minimum depth if a range	depth, meters
-Maximum depth (in meters) if a range	elevation
-Elevation* (in meters) or minimum elevation if a range	
-Maximum elevation (in meters) if a range	
-Country*	geographic location (country and/or sea,region)
-Seq Project PI Name (No edit)	DNA seq project PI
-Seq Project Sample Contact Name (No edit)	
-Proposal ID (No edit)	DNA proposal ID
+user_facility_field	sub_port_field	sub_port_class
+Seq Project ID (No edit)	DNA seq project ID	JgiMgInterface
+Seq Project Name (No edit)	DNA seq project name	JgiMgInterface
+Sample ID (No edit)	DNA sample ID	JgiMgInterface
+Source Sample GUID	globally unique ID	SoilInterface
+Sample Name*	sample name	SoilInterface
+Isotope Label* (required for Stable Isotope Probing samples)	isotope exposure/addition	SoilInterface
+Concentration* (ng/ul)	DNA concentration in ng/ul	JgiMgInterface
+Volume* (ul)	DNA volume in ul	JgiMgInterface
+Absorbance 260/280* (required for metagenome improved drafts or any PacBio libraries)	DNA absorbance 260/280	JgiMgInterface
+Absorbance 260/230* (required for metagenome improved drafts or any PacBio libraries)	DNA absorbance 260/230	JgiMgInterface
+Tube or Plate Label*	DNA container type	JgiMgInterface
+Sample Container*	DNA container label	JgiMgInterface
+Plate location (well #)* required if samples provided in a plate	DNA plate position	JgiMgInterface
+Sample Format*	DNA sample format	JgiMgInterface
+Was Sample DNAse treated?*	DNase treatment DNA	JgiMgInterface
+Biosafety Material Category*
+Sample Isolation Method*	DNA isolation method	JgiMgInterface
+Collection Year*	collection date	SoilInterface
+Collection Month*	collection date	SoilInterface
+Collection Day*	collection date	SoilInterface
+Sample Isolated From*	specific_ecosystem	SoilInterface
+Latitude*	geographic location (latitude and longitude)	SoilInterface
+Longitude*	geographic location (latitude and longitude)	SoilInterface
+Altitude or Depth* (in meters)	depth, meters
+"Maximum depth (in meters) if a range		"
+Elevation* (in meters) or minimum elevation if a range	elevation, meters	SoilInterface
+Maximum elevation (in meters) if a range
+Country*	geographic location (country and/or sea,region)	SoilInterface
+Seq Project PI Name (No edit)	DNA seq project PI	JgiMgInterface
+Seq Project Sample Contact Name (No edit)	DNA seq project contact	JgiMgInterface
+Proposal ID (No edit)	DNA proposal ID	JgiMgInterface
