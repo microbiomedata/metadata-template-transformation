@@ -1,59 +1,59 @@
-user_facility_field	sub_port_field
-GUID Source	
-Other GUID Source	
-Unique ID	globally unique ID
-Sample Name	sample name
-Analysis/Data Type	analysis/data type
-Number Technical Replicate	number technical replicate
-Replicate Number	replicate number
+user_facility_field	sub_port_field	sub_port_class
+GUID Source
+Other GUID Source
+Unique ID	globally unique ID	SoilInterface
+Sample Name	sample name	SoilInterface
+Analysis/Data Type	analysis/data type	SoilInterface
+Number Technical Replicate	number technical replicate	EmslInterface
+Replicate Numberal	replicate number	EmslInterface
 Source Material ID	
-sample linkage	sample linkage
-Growth Facility	growth facility
+sample linkage	sample linkage	SoilInterface
+Growth Facility	growth facility	SoilInterface
 Other Growth Facility	
-Sample size	
-Collection Date	collection date
-Storage Condition	storage conditions
+Sample size	sample shipped amount	EmslInterface
+Collection Date	collection date	SoilInterface
+Storage Condition	storage conditions	SoilInterface
 Other Storage Condition	
-Storage temperature	EMSL sample storage temperature, deg. C
-Other Storage temperature	sample storage temperature
-Geographical Location Name	geographic location (country and/or sea,region)
-latitude, longitude	geographic location (latitude and longitude)
-elevation-meters	elevation
-Material Processing	sample material processing
-sample collection method	sample collection method
-depth	depth, meters
-sample collection device	sample collection device
+Storage temperature	EMSL sample storage temperature, deg. C	EmslInterface
+Other Storage temperature	sample storage temperature	SoilInterface
+Geographical Location Name	geographic location (country and/or sea,region)	SoilInterface
+latitude, longitude	geographic location (latitude and longitude)	SoilInterface
+elevation-meters	elevation, meters	SoilInterface
+Material Processing	sample material processing	SoilInterface
+sample collection method	sample collection method	SoilInterface
+depth	depth, meters	SoilInterface
+sample collection device	sample collection device	SoilInterface
 Sieve Size	
-Filter Method	filter method
+Filter Method	filter method	SoilInterface
 Plant Structure	
-Incubation Start Date	incubation start date
-Incubation Collection Date	incubation collection time, GMT
-collection time	collection time, GMT	
+Incubation Start Date	incubation start date	SoilInterface
+Incubation Collection Date	incubation collection date	SoilInterface
+collection time	collection time, GMT	SoilInterface
 common name	
 NCBI ID	
 isolation and growth condition	
 Growth Medium	
-watering regimen/schedule treatment	watering regimen
-air temperature regimen treatment	air temperature regimen
-chemical administration	chemical administration
-isotope exposure/addition treatment	isotope exposure/addition
-gas evironment/exposure treatment	gaseous environment
-climate environment treatment	climate environment
-humidity regimen/adition treatment	humidity regimen
-light regimen treatment	light regimen
-biotic regimen/addition treatment	biotic regimen
-other treatments	other treatments
-Extraction method	DNA isolation method
+watering regimen/schedule treatment	watering regimen	SoilInterface
+air temperature regimen treatment	air temperature regimen	SoilInterface
+chemical administration	chemical administration	SoilInterface
+isotope exposure/addition treatment	isotope exposure/addition	SoilInterface
+gas evironment/exposure treatment	gaseous environment	SoilInterface
+climate environment treatment	climate environment	SoilInterface
+humidity regimen/adition treatment	humidity regimen	SoilInterface
+light regimen treatment	light regimen	SoilInterface
+biotic regimen/addition treatment	biotic regimen	SoilInterface
+other treatments	other treatments	SoilInterface
+Extraction method
 Method Test	
-altitude-meters	altitude
-Other	
-amount or size of sample collected	amount or size of sample collected
-experimental factor	experimental factor
-experimental factor- other	experimental factor- other
-relationship to oxygen	relationship to oxygen
-non microbial biomass	non-microbial biomass
-non-microbial biomass method	non-microbial biomass method
-observed biotic relationship	observed biotic relationship
+altitude-meters	altitude	SoilInterface
+Other
+amount or size of sample collected	amount or size of sample collected	SoilInterface
+experimental factor	experimental factor	SoilInterface
+experimental factor- other	experimental factor- other	SoilInterface
+relationship to oxygen	relationship to oxygen	SoilInterface
+non microbial biomass	non-microbial biomass	SoilInterface
+non-microbial biomass method	non-microbial biomass method	SoilInterface
+observed biotic relationship	observed biotic relationship	SoilInterface
 encoded traits	
 host specificity or range	
 known pathogenicity	
@@ -114,20 +114,20 @@ seasonal environment
 standing water regimen	
 tissue culture growth media	
 water temperature regimen	
-miscellaneous parameter	miscellaneous parameter
+miscellaneous parameter	miscellaneous parameter	SoilInterface
 organism count	
 perturbation	
-temperature	temperature
-pH	pH
-pH method	pH method
+temperature	temperature	SoilInterface
+pH	pH	SoilInterface
+pH method	pH method	SoilInterface
 alkyl diethers	
 aminopeptidase activity	
-ammonium	
+ammonium	ammonium nitrogen	SoilInterface
 bacterial carbon production	
 bishomohopanol	
 bromide	
 calcium	
-carbon/nitrogen ratio	carbon/nitrogen ratio
+carbon/nitrogen ratio	carbon/nitrogen ratio	SoilInterface
 chloride	
 chlorophyll	
 density	
@@ -143,12 +143,12 @@ magnesium
 mean friction velocity	
 mean peak friction velocity	
 n-alkanes	
-nitrite	
+nitrite	nitrite_nitrogen	SoilInterface
 nitrogen	
-organic carbon	total organic carbon
-organic matter	organic matter
-organic nitrogen	organic nitrogen
-particulate organic carbon	
+organic carbon	total organic carbon	SoilInterface
+organic matter	organic matter	SoilInterface
+organic nitrogen	organic nitrogen	SoilInterface
+particulate organic carbon
 petroleum hydrocarbon	
 phaeopigments	
 phospholipid fatty acid	
@@ -161,12 +161,12 @@ sulfide
 tidal stage	
 total depth of water column	
 turbidity	
-salinity	salinity	
-salinity method	salinity method
+salinity	salinity	SoilInterface
+salinity method	salinity method	SoilInterface
 alkalinity	
 alkalinity method	
-nitrate	
-phosphate	phosphate
+nitrate	nitrate_nitrogen	SoilInterface
+phosphate	phosphate	SoilInterface
 sodium	
 atmospheric data	
 bacterial production	
@@ -186,63 +186,63 @@ total dissolved nitrogen
 total inorganic nitrogen	
 total nitrogen concentration	
 total particulate carbon	
-total phosphorus	total phosphorus
-water current	
-size-fraction lower threshold	size-fraction lower threshold
-size-fraction upper threshold	size-fraction upper threshold
+total phosphorus	total phosphorus	SoilInterface
+water current
+size-fraction lower threshold	size-fraction lower threshold	SoilInterface
+size-fraction upper threshold	size-fraction upper threshold	SoilInterface
 methane	
 particle classification	
 porosity	
 sediment type	
-total carbon	total carbon
-water content	water content
-water content method	water content method
-microbial biomass	microbial biomass
-microbial biomass method	microbial biomass method
-microbial biomass carbon	microbial biomass carbon
-microbial biomass carbon method	microbial biomass carbon method
-microbial biomass nitrogen	microbial biomass nitrogen
-microbial biomass nitrogen method	microbial biomass nitrogen method	
-organic nitrogen method	organic nitrogen method
-history/extreme events	history/agrochemical additions
-history/fire	history/fire
-history/flooding	history/flooding
-total nitrogen content	total nitrogen content
-total nitrogen content method	total nitrogen content method
-total organic carbon method	total organic carbon method
-total organic carbon	total organic carbon
-history/agrochemical additions	history/agrochemical additions
-extreme_unusual_properties/Al saturation	extreme_unusual_properties/Al saturation
-extreme_unusual_properties/Al saturation method	extreme_unusual_properties/Al saturation method
-mean annual precipitation	mean annual precipitation
-mean annual temperature	mean annual temperature
-history/crop rotation	history/crop rotation
-current land use	current land use
-current vegetation	current vegetation
-current vegetation method	current vegetation method
-drainage classification	drainage classification
-soil_taxonomic/FAO classification	soil_taxonomic/FAO classification
-extreme_unusual_properties/heavy metals	extreme_unusual_properties/heavy metals
-extreme_unusual_properties/heavy metals method	extreme_unusual_properties/heavy metals method
-horizon	soil horizon
-horizon method	horizon method
+total carbon	total carbon	SoilInterface
+water content	water content	SoilInterface
+water content method	water content method	SoilInterface
+microbial biomass	microbial biomass	SoilInterface
+microbial biomass method	microbial biomass method	SoilInterface
+microbial biomass carbon	microbial biomass carbon	SoilInterface
+microbial biomass carbon method	microbial biomass carbon method	SoilInterface
+microbial biomass nitrogen	microbial biomass nitrogen	SoilInterface
+microbial biomass nitrogen method	microbial biomass nitrogen method	SoilInterface
+organic nitrogen method	organic nitrogen method	SoilInterface
+history/extreme events	history/extreme events	SoilInterface
+history/fire	history/fire	SoilInterface
+history/flooding	history/flooding	SoilInterface
+total nitrogen content	total nitrogen content	SoilInterface
+total nitrogen content method	total nitrogen content method	SoilInterface
+total organic carbon method	total organic carbon method	SoilInterface
+total organic carbon	total organic carbon	SoilInterface
+history/agrochemical additions	history/agrochemical additions	SoilInterface
+extreme_unusual_properties/Al saturation	aluminum saturation/ extreme unusual properties	SoilInterface
+extreme_unusual_properties/Al saturation method	aluminum saturation method/ extreme unusual properties	SoilInterface
+mean annual precipitation	mean annual precipitation	SoilInterface
+mean annual temperature	mean annual temperature	SoilInterface
+history/crop rotation	history/crop rotation	SoilInterface
+current land use	current land use	SoilInterface
+current vegetation	current vegetation	SoilInterface
+current vegetation method	current vegetation method	SoilInterface
+drainage classification	drainage classification	SoilInterface
+soil_taxonomic/FAO classification	soil_taxonomic/FAO classification	SoilInterface
+extreme_unusual_properties/heavy metals	heavy metals/ extreme unusual properties	SoilInterface
+extreme_unusual_properties/heavy metals method	heavy metals method/ extreme unusual properties	SoilInterface
+horizon	soil horizon	SoilInterface
+horizon method	soil horizon method	SoilInterface
 links to additional analysis	
-link to classification information	link to classification information
-link to climate information	link to climate information
-soil_taxonomic/local classification	soil_taxonomic/local classification
-soil_taxonomic/local classification method	soil_taxonomic/local classification method
-history/previous land use	history/previous land use
-history/previous land use method	history/previous land use method
-profile position	profile position
-mean seasonal precipitation	mean seasonal precipitation
-mean seasonal temperature	mean seasonal temperature
-slope aspect	slope aspect
-slope gradient	slope gradient
-soil type	soil type	
-soil type method	soil type method
-texture	soil texture measurement
-texture method	soil texture method
-history/tillage	history/tillage
+link to classification information	link to classification information	SoilInterface
+link to climate information	link to climate information	SoilInterface
+soil_taxonomic/local classification	soil_taxonomic/local classification	SoilInterface
+soil_taxonomic/local classification method	soil_taxonomic/local classification method	SoilInterface
+history/previous land use	history/previous land use	SoilInterface
+history/previous land use method	history/previous land use method	SoilInterface
+profile position	profile position	SoilInterface
+mean seasonal precipitation	average seasonal precipitation	SoilInterface
+mean seasonal temperature	mean seasonal temperature	SoilInterface
+slope aspect	slope aspect	SoilInterface
+slope gradient	slope gradient	SoilInterface
+soil type	soil type	SoilInterface
+soil type method	soil type method	SoilInterface
+texture	soil texture measurement	SoilInterface
+texture method	soil texture method	SoilInterface
+history/tillage	history/tillage	SoilInterface
 biochemical oxygen demand	
 chemical oxygen demand	
 efficiency percent	
@@ -252,7 +252,7 @@ industrial effluent percent
 inorganic particles	
 organic particles	
 pre-treatment	
-primary treatment	
+primary treatment
 reactor type	
 secondary treatment	
 sewage type	
@@ -260,6 +260,6 @@ sludge retention time
 soluble inorganic material	
 soluble organic material	
 suspended solids	
-tertiary treatment	
-total phosphate	phosphate
-wastewater type	
+tertiary treatment
+total phosphate	phosphate	SoilInterface
+wastewater type
