@@ -4,7 +4,7 @@
 
 The programs bundled in this repository intend to solve the problem of automatically retrieving metadata records for a given study submitted to NMDC through the [NMDC Submission Portal](https://data.microbiomedata.org/submission/home), and converting the metadata into Excel spreadsheets that are accepted by [DOE user facilities](https://www.energy.gov/science/office-science-user-facilities).
 
-There are three components to keep in mind when trying to use this application.
+There are two components to keep in mind when trying to use this application.
 
 1. JSON header configuration file
   * The headers that go into the user facility spreadsheet outputs is controlled by JSON files.
