@@ -1,12 +1,9 @@
 import pandas as pd
 import os
 import json
-import warnings
 import click
 import dotenv
 import requests
-
-warnings.filterwarnings("ignore", category=UserWarning, module="openpyxl")
 
 
 def load_dotenv():
@@ -15,7 +12,9 @@ def load_dotenv():
         dotenv.load_dotenv(dotenv_path=env_path, override=True)
 
 
-def retrieve_metadata_records(metadata_submission_id: str) -> pd.DataFrame:
+def retrieve_metadata_records(
+    user_facility, metadata_submission_id: str
+) -> pd.DataFrame:
     env = dict(os.environ)
     response = requests.request(
         "GET",
@@ -23,15 +22,37 @@ def retrieve_metadata_records(metadata_submission_id: str) -> pd.DataFrame:
         cookies={"session": env["DATA_PORTAL_COOKIE"]},
     ).json()
 
-    if "soil_data" in response["metadata_submission"]["sampleData"]:
-        soil_data = response["metadata_submission"]["sampleData"]["soil_data"]
-        df = pd.DataFrame(soil_data)
+    if user_facility == "emsl":
+        if "soil_data" in response["metadata_submission"]["sampleData"]:
+            soil_data = response["metadata_submission"]["sampleData"]["soil_data"]
+            soil_data_df = pd.DataFrame(soil_data)
+
+        if "emsl_data" in response["metadata_submission"]["sampleData"]:
+            emsl_data = response["metadata_submission"]["sampleData"]["emsl_data"]
+            emsl_data_df = pd.DataFrame(emsl_data)
+
+        df = pd.DataFrame()
+        if soil_data_df.empty and not emsl_data_df.empty:
+            df = emsl_data_df
+        elif emsl_data_df.empty and not soil_data_df.empty:
+            df = soil_data_df
+        elif not emsl_data_df.empty and not soil_data_df.empty:
+            common_cols = list(
+                set(emsl_data_df.columns.to_list())
+                & set(soil_data_df.columns.to_list())
+            )
+            if "source_mat_id" in common_cols:
+                common_cols.remove("source_mat_id")
+
+            emsl_data_df = emsl_data_df.drop(columns=common_cols)
+            df = pd.merge(soil_data_df, emsl_data_df, on="source_mat_id")
+            print(df.columns.to_list())
+        else:
+            raise ValueError(
+                f"The submission metadata record: {metadata_submission_id} is empty."
+            )
 
         return df
-    else:
-        raise ValueError(
-            f"The soil data in submission metadata record: {metadata_submission_id} is empty."
-        )
 
 
 def combine_headers_df(json_mapper: dict) -> pd.DataFrame:
@@ -59,15 +80,18 @@ def combine_headers_df(json_mapper: dict) -> pd.DataFrame:
     return headers_df
 
 
-def combine_sample_rows_df(df: pd.DataFrame, json_mapper: dict) -> pd.DataFrame:
+def combine_sample_rows_df(
+    submission_df: pd.DataFrame, json_mapper: dict
+) -> pd.DataFrame:
     rows_df = pd.DataFrame()
     for _, v in json_mapper.items():
         if (
             "sub_port_mapping" in v
-            and v["sub_port_mapping"] in df.columns.to_list()
+            and v["sub_port_mapping"] in submission_df.columns.to_list()
             and "header" in v
         ):
-            rows_df[v["header"]] = df[v["sub_port_mapping"]]
+            rows_df[v["header"]] = submission_df[v["sub_port_mapping"]]
+
     return rows_df
 
 
@@ -79,11 +103,14 @@ def combine_headers_and_rows(
 
 @click.option("--submission", "-s", required=True, help="Metadata submission id.")
 @click.option(
+    "--user-facility", "-u", required=True, help="User facility to send data to."
+)
+@click.option(
     "--mapper",
     "-m",
     required=True,
     type=click.Path(exists=True),
-    help="Path to user facility specific TSV file.",
+    help="Path to user facility specific JSON file.",
 )
 @click.option(
     "--output",
@@ -92,9 +119,9 @@ def combine_headers_and_rows(
     help="Path to result output XLSX file.",
 )
 @click.command()
-def cli(submission, mapper, output):
+def cli(submission, user_facility, mapper, output):
     load_dotenv()
-    metadata_submission = retrieve_metadata_records(submission)
+    metadata_submission = retrieve_metadata_records(user_facility, submission)
 
     with open(mapper, "r") as f:
         json_mapper = json.load(f)
