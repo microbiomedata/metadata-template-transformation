@@ -14,7 +14,7 @@ Sample Container*	RNA container label	JgiMtInterface
 Plate location (well #)* required if samples provided in a plate	RNA plate position	JgiMtInterface
 Sample Format*	RNA sample format	JgiMtInterface
 Was Sample DNAse treated?*	DNase treated	JgiMtInterface
-Biosafety Material Category*
+Biosafety Material Category*	?	?
 Sample Isolation Method*	RNA isolation method	JgiMtInterface
 Collection Year*	collection date	SoilInterface
 Collection Month*	collection date	SoilInterface
