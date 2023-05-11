@@ -3,7 +3,7 @@ Seq Project ID (No edit)	DNA seq project ID	JgiMgInterface
 Seq Project Name (No edit)	DNA seq project name	JgiMgInterface
 Sample ID (No edit)	DNA sample ID	JgiMgInterface
 Source Sample GUID	globally unique ID	SoilInterface
-Sample Name*	sample name	SoilInterface
+Sample Name*	DNA sample name	JgiMgInterface
 Isotope Label* (required for Stable Isotope Probing samples)	isotope exposure/addition	SoilInterface
 Concentration* (ng/ul)	DNA concentration in ng/ul	JgiMgInterface
 Volume* (ul)	DNA volume in ul	JgiMgInterface

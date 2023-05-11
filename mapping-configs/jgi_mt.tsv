@@ -1,0 +1,32 @@
+user_facility_field	sub_port_field	sub_port_class
+Seq Project ID (No edit)	RNA seq project ID	JgiMtInterface
+Seq Project Name (No edit)	RNA seq project name	JgiMtInterface
+Sample ID (No edit)	RNA sample ID	JgiMtInterface
+Source Sample GUID	globally unique ID	SoilInterface
+Sample Name*	RNA sample name	JgiMtInterface
+Isotope Label* (required for Stable Isotope Probing samples)	isotope exposure/addition	SoilInterface
+Concentration* (ng/ul)	RNA concentration in ng/ul	JgiMtInterface
+Volume* (ul)	RNA volume in ul	JgiMtInterface
+Absorbance 260/280* (required for metagenome improved drafts or any PacBio libraries)	RNA absorbance 260/280	JgiMtInterface
+Absorbance 260/230* (required for metagenome improved drafts or any PacBio libraries)	RNA absorbance 260/230	JgiMtInterface
+Tube or Plate Label*	RNA container type	JgiMtInterface
+Sample Container*	RNA container label	JgiMtInterface
+Plate location (well #)* required if samples provided in a plate	RNA plate position	JgiMtInterface
+Sample Format*	RNA sample format	JgiMtInterface
+Was Sample DNAse treated?*	DNase treated	JgiMtInterface
+Biosafety Material Category*
+Sample Isolation Method*	RNA isolation method	JgiMtInterface
+Collection Year*	collection date	SoilInterface
+Collection Month*	collection date	SoilInterface
+Collection Day*	collection date	SoilInterface
+Sample Isolated From*	specific_ecosystem	SoilInterface
+Latitude*	geographic location (latitude and longitude)	SoilInterface
+Longitude*	geographic location (latitude and longitude)	SoilInterface
+Altitude or Depth* (in meters)	depth, meters
+"Maximum depth (in meters) if a range		"
+Elevation* (in meters) or minimum elevation if a range	elevation, meters	SoilInterface
+Maximum elevation (in meters) if a range
+Country*	geographic location (country and/or sea,region)	SoilInterface
+Seq Project PI Name (No edit)	RNA seq project PI	JgiMtInterface
+Seq Project Sample Contact Name (No edit)	RNA seq project contact	JgiMtInterface
+Proposal ID (No edit)	RNA proposal ID	JgiMtInterface
