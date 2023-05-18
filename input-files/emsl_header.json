@@ -15,13 +15,13 @@
         "1": "Field REQUIRED for ALL sample submission. Options: IGSN- http://www.geosamples.org/getigsn ; UUID- https://www.uuidgenerator.net/",
         "2": "{text}",
         "header": "unique_ID",
-        "sub_port_mapping": "unique_ID"
+        "sub_port_mapping": "source_mat_id"
     },
     "Sample Name": {
         "1": "ID that is present on the shipped sample. Human readable.",
         "2": "{text}",
         "header": "sample_name",
-        "sub_port_mapping": "sample_name"
+        "sub_port_mapping": "samp_name"
     },
     "Analysis/Data Type": {
         "1": "This field is constrained to contain only a set of limited terms that indicate the types of data that were generated. Include all the data types, this field can have multiple values separated by a ;",
@@ -45,7 +45,7 @@
         "1": "A unique identifier assigned to an original material sample collected or to any derived sub-samples. The source material should be listed as a sample to inform details about parent material relationship.",
         "2": "{origin}:{text}",
         "header": "source_mat_ID",
-        "sub_port_mapping": "source_mat_ID"
+        "sub_port_mapping": "source_mat_id"
     },
     "sample linkage": {
         "1": "A unique identifier to assign parent-child, subsample, or sibling samples. This is relevant when a sample or other material was used to generate the new sample. This field allows multiple entries separated by ; (Examples: Soil collected from the field will link with the soil used in an incubation. The soil a plant was grown in links to the plant sample. An original culture sample was transferred to a new vial and generated a new sample)",
@@ -75,7 +75,7 @@
         "1": "The date of sampling, either as an instance (single point) or interval.",
         "2": "{YYYY-MM-DD}",
         "header": "collection_date",
-        "sub_port_mapping": "collection date"
+        "sub_port_mapping": "collection_date"
     },
     "Storage Condition": {
         "1": "Detail how your sample was stored",
