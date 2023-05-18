@@ -40,11 +40,11 @@ poetry install
 Usage: etl.py [OPTIONS]
 
 Options:
-  -o, --output TEXT         Path to result output XLSX file.  [required]
-  -m, --mapper PATH         Path to user facility specific JSON file.
-                            [required]
-  -h, --header BOOLEAN      [default: False]
-  -u, --user-facility TEXT  User facility to send data to.  [required]
-  -s, --submission TEXT     Metadata submission id.  [required]
-  --help                    Show this message and exit.
+  -o, --output TEXT           Path to result output XLSX file.  [required]
+  -m, --mapper PATH           Path to user facility specific JSON file.
+                              [required]
+  -h, --header / --no-header  [default: no-header]
+  -u, --user-facility TEXT    User facility to send data to.  [required]
+  -s, --submission TEXT       Metadata submission id.  [required]
+  --help                      Show this message and exit.
 ```
