@@ -14,6 +14,9 @@ There are two components to keep in mind when trying to use this application.
   * The *sub_port_mapping* keyword can be used to specify mappings between columns in the Submission Portal template and columns in the user facility spreadsheet outputs.
   * Follow the examples that have already been specified in [input-files](input-files/). There are two user facility header customizations that have already been created as examples for the NMDC. They are:
     * EMSL header configuration: [emsl_header.json](input-files/emsl_header.json)
+    * JGI MG and MT header configuration
+      * [jgi_mg_header.json](input-files/jgi_mg_header.json)
+      * [jgi_mt_header.json](input-files/jgi_mt_header.json)
 
 2. [etl.py](etl.py)
    The command line application that can facilitate the conversion of metadata from the Submission Portal into user facility formats by consuming the above two files as inputs.
@@ -33,12 +36,15 @@ poetry install
 2. Run `etl.py` with options as follows:
 
 ```bash
-➜  metadata-template-transformation git:(main) ✗ python etl.py --help
+➜  metadata-template-transformation git:(main) ✗ poetry run python etl.py --help                                          
 Usage: etl.py [OPTIONS]
 
 Options:
-  -o, --output TEXT      Path to result output XLSX file.  [required]
-  -m, --mapper PATH      Path to user facility specific TSV file.  [required]
-  -s, --submission TEXT  Metadata submission id.  [required]
-  --help                 Show this message and exit.
+  -o, --output TEXT         Path to result output XLSX file.  [required]
+  -m, --mapper PATH         Path to user facility specific JSON file.
+                            [required]
+  -h, --header BOOLEAN      [default: False]
+  -u, --user-facility TEXT  User facility to send data to.  [required]
+  -s, --submission TEXT     Metadata submission id.  [required]
+  --help                    Show this message and exit.
 ```
