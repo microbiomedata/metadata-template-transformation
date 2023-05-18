@@ -121,7 +121,7 @@ def combine_headers_and_rows(
 @click.option(
     "--user-facility", "-u", required=True, help="User facility to send data to."
 )
-@click.option("--header", "-h", default=False, show_default=True)
+@click.option("--header/--no-header", "-h", default=False, show_default=True)
 @click.option(
     "--mapper",
     "-m",
