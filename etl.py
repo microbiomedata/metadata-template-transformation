@@ -31,7 +31,7 @@ class MetadataRetriever:
         self.user_facility = user_facility
         self.env: Dict[str, str] = dict(os.environ)
 
-    def retrieve_metadata_records(self) -> pd.DataFrame:
+    def retrieve_metadata_records(self, unique_field: str) -> pd.DataFrame:
         """
         Retrieves the metadata records for the given submission ID and user facility.
 
@@ -65,11 +65,11 @@ class MetadataRetriever:
             common_cols: List[str] = list(
                 set(common_df.columns.to_list()) & set(soil_data_df.columns.to_list())
             )
-            if "source_mat_id" in common_cols:
-                common_cols.remove("source_mat_id")
+            if unique_field in common_cols:
+                common_cols.remove(unique_field)
 
             common_df = common_df.drop(columns=common_cols)
-            df = pd.merge(soil_data_df, common_df, on="source_mat_id")
+            df = pd.merge(soil_data_df, common_df, on=unique_field)
         else:
             raise ValueError(
                 f"The submission metadata record: {self.metadata_submission_id} is empty."
@@ -186,13 +186,24 @@ class SpreadsheetCreator:
     help="Path to user facility specific JSON file.",
 )
 @click.option(
+    "--unique-field",
+    "-uf",
+    required=True,
+    help="Unique field to identify the metadata records.",
+)
+@click.option(
     "--output",
     "-o",
     required=True,
     help="Path to result output XLSX file.",
 )
 def cli(
-    submission: str, user_facility: str, header: bool, mapper: str, output: str
+    submission: str,
+    user_facility: str,
+    header: bool,
+    mapper: str,
+    unique_field: str,
+    output: str,
 ) -> None:
     """
     Command-line interface for creating a spreadsheet based on metadata records.
@@ -201,11 +212,12 @@ def cli(
     :param user_facility: The user facility to retrieve data from.
     :param header: True if the headers should be included, False otherwise.
     :param mapper: Path to the JSON mapper specifying column mappings.
+    :param unique_field: Unique field to identify the metadata records.
     :param output: Path to the output XLSX file.
     """
     load_dotenv()
     metadata_retriever = MetadataRetriever(submission, user_facility)
-    metadata_df = metadata_retriever.retrieve_metadata_records()
+    metadata_df = metadata_retriever.retrieve_metadata_records(unique_field)
 
     with open(mapper, "r") as f:
         json_mapper: Dict[str, Dict[str, Union[str, List[str]]]] = json.load(f)
