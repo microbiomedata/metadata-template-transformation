@@ -37,9 +37,21 @@ class MetadataRetriever:
 
         :return: The retrieved metadata records as a Pandas DataFrame.
         """
+        refresh_response = requests.post(
+            "https://data-dev.microbiomedata.org/auth/refresh",
+            json={"refresh_token": self.env["DATA_PORTAL_REFRESH_TOKEN"]},
+        )
+        refresh_response.raise_for_status()
+        refresh_body = refresh_response.json()
+        access_token = refresh_body["access_token"]
+
+        headers = {
+            "content-type": "application/json; charset=UTF-8",
+            "Authorization": f"Bearer {access_token}",
+        }
         response: Dict[str, Any] = requests.get(
-            f"https://data.microbiomedata.org/api/metadata_submission/{self.metadata_submission_id}",
-            cookies={"session": self.env["DATA_PORTAL_COOKIE"]},
+            f"https://data-dev.microbiomedata.org/api/metadata_submission/{self.metadata_submission_id}",
+            headers=headers,
         ).json()
 
         if "soil_data" in response["metadata_submission"]["sampleData"]:
