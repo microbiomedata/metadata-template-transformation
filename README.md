@@ -23,7 +23,7 @@ There are two components to keep in mind when trying to use this application.
 
 ## Software Requirements
 1. [poetry](https://python-poetry.org/)
-  - https://python-poetry.org/docs/#installing-with-the-official-installer 
+    - https://python-poetry.org/docs/#installing-with-the-official-installer 
 3. [Python](https://www.python.org/downloads/release/python-390/)
 
 ## Setup
