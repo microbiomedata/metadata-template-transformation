@@ -23,17 +23,33 @@ There are two components to keep in mind when trying to use this application.
 
 ## Software Requirements
 1. [poetry](https://python-poetry.org/)
-2. Python 3.9
+  - https://python-poetry.org/docs/#installing-with-the-official-installer 
+3. [Python](https://www.python.org/downloads/release/python-390/)
 
 ## Setup
 
-1. Install dependencies with poetry
+1.  Clone this repo
+
+```
+git clone https://github.com/microbiomedata/metadata-template-transformation.git
+```
+
+2. Install dependencies with poetry
 
 ```
 poetry install
 ```
 
-2. Run `etl.py` with options as follows:
+3. Cookie access to the submission portal is required and can be provided by editing the .env file. Requires you be an individual with appropriate access to the submission you're transforming.
+- 1. When **signed into** the NMDC data portal, submission portal, or api sites, right click & select 'Inspect'
+- 2. In the 'Application' menu, select 'Local Storage', specifically, the storage for the NMDC portal
+- 3. For the  'Storage Refresh Token' copy the 'Value'
+- 4. Edit your .env file and add this value to the file. This should read 
+```
+DATA_PORTAL_REFRESH_TOKEN={value}
+```
+
+4. Run `etl.py` with options as follows:
 
 ```bash
 ➜  metadata-template-transformation git:(main) ✗ poetry run python etl.py --help                                          
@@ -47,4 +63,12 @@ Options:
   -u, --user-facility TEXT    User facility to send data to.  [required]
   -s, --submission TEXT       Metadata submission id.  [required]
   --help                      Show this message and exit.
+```
+- Example- JGI
+```
+poetry run python etl.py --submission {UUID of the target submission} --user-facility jgi_mg --mapper input-files/jgi_mg_header.json --output file-name_jgi.xlsx
+```
+- Example- EMSL
+```
+poetry run python etl.py --submission df1d2ba5-33be-43d0-b4b9-e5d57ace3f70 --user-facility emsl --mapper input-files/emsl_header.json --output file-name_emsl.xlsx 
 ```
