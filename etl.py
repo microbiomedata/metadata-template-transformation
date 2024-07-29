@@ -5,8 +5,8 @@ import pandas as pd
 import click
 import requests
 
-from typing import Dict, Any, List, Union, Optional
-from dotenv import load_dotenv
+from typing import Dict, Any, List, Union
+from dotenv import load_dotenv, dotenv_values
 
 
 class MetadataRetriever:
@@ -29,7 +29,21 @@ class MetadataRetriever:
         """
         self.metadata_submission_id = metadata_submission_id
         self.user_facility = user_facility
+        self.load_and_set_env_vars()
+
+    def load_and_set_env_vars(self):
+        """Loads and sets environment variables from .env file."""
+        env_path = os.path.join(os.path.dirname(__file__), ".env")
+        env_vars = dotenv_values(env_path)
+        for key, value in env_vars.items():
+            os.environ[key] = value
+
         self.env: Dict[str, str] = dict(os.environ)
+        # self.debug_env_vars()
+
+    def debug_env_vars(self):
+        """Prints the current environment variables for debugging purposes."""
+        print(f"DATA_PORTAL_REFRESH_TOKEN: {self.env.get('DATA_PORTAL_REFRESH_TOKEN')}")
 
     def retrieve_metadata_records(self, unique_field: str) -> pd.DataFrame:
         """
@@ -37,8 +51,10 @@ class MetadataRetriever:
 
         :return: The retrieved metadata records as a Pandas DataFrame.
         """
+        self.load_and_set_env_vars()
+
         refresh_response = requests.post(
-            "https://data-dev.microbiomedata.org/auth/refresh",
+            "https://data.microbiomedata.org/auth/refresh",
             json={"refresh_token": self.env["DATA_PORTAL_REFRESH_TOKEN"]},
         )
         refresh_response.raise_for_status()
@@ -50,7 +66,7 @@ class MetadataRetriever:
             "Authorization": f"Bearer {access_token}",
         }
         response: Dict[str, Any] = requests.get(
-            f"https://data-dev.microbiomedata.org/api/metadata_submission/{self.metadata_submission_id}",
+            f"https://data.microbiomedata.org/api/metadata_submission/{self.metadata_submission_id}",
             headers=headers,
         ).json()
 
@@ -228,6 +244,11 @@ def cli(
     :param output: Path to the output XLSX file.
     """
     load_dotenv()
+    env_path = os.path.join(os.path.dirname(__file__), ".env")
+    env_vars = dotenv_values(env_path)
+    for key, value in env_vars.items():
+        os.environ[key] = value
+
     metadata_retriever = MetadataRetriever(submission, user_facility)
     metadata_df = metadata_retriever.retrieve_metadata_records(unique_field)
 
