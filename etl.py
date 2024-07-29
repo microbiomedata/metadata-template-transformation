@@ -30,6 +30,7 @@ class MetadataRetriever:
         self.metadata_submission_id = metadata_submission_id
         self.user_facility = user_facility
         self.load_and_set_env_vars()
+        self.base_url = self.env.get("SUBMISSION_PORTAL_BASE_URL")
 
     def load_and_set_env_vars(self):
         """Loads and sets environment variables from .env file."""
@@ -44,6 +45,7 @@ class MetadataRetriever:
     def debug_env_vars(self):
         """Prints the current environment variables for debugging purposes."""
         print(f"DATA_PORTAL_REFRESH_TOKEN: {self.env.get('DATA_PORTAL_REFRESH_TOKEN')}")
+        print(f"SUBMISSION_PORTAL_BASE_URL: {self.env.get('SUBMISSION_PORTAL_BASE_URL')}")
 
     def retrieve_metadata_records(self, unique_field: str) -> pd.DataFrame:
         """
@@ -54,7 +56,7 @@ class MetadataRetriever:
         self.load_and_set_env_vars()
 
         refresh_response = requests.post(
-            "https://data.microbiomedata.org/auth/refresh",
+            f"{self.base_url}/auth/refresh",
             json={"refresh_token": self.env["DATA_PORTAL_REFRESH_TOKEN"]},
         )
         refresh_response.raise_for_status()
@@ -66,7 +68,7 @@ class MetadataRetriever:
             "Authorization": f"Bearer {access_token}",
         }
         response: Dict[str, Any] = requests.get(
-            f"https://data.microbiomedata.org/api/metadata_submission/{self.metadata_submission_id}",
+            f"{self.base_url}/api/metadata_submission/{self.metadata_submission_id}",
             headers=headers,
         ).json()
 
