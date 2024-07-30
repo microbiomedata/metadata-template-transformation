@@ -45,7 +45,9 @@ class MetadataRetriever:
     def debug_env_vars(self):
         """Prints the current environment variables for debugging purposes."""
         print(f"DATA_PORTAL_REFRESH_TOKEN: {self.env.get('DATA_PORTAL_REFRESH_TOKEN')}")
-        print(f"SUBMISSION_PORTAL_BASE_URL: {self.env.get('SUBMISSION_PORTAL_BASE_URL')}")
+        print(
+            f"SUBMISSION_PORTAL_BASE_URL: {self.env.get('SUBMISSION_PORTAL_BASE_URL')}"
+        )
 
     def retrieve_metadata_records(self, unique_field: str) -> pd.DataFrame:
         """
@@ -72,13 +74,16 @@ class MetadataRetriever:
             headers=headers,
         ).json()
 
-        if "soil_data" in response["metadata_submission"]["sampleData"]:
-            soil_data: List[Dict[str, Any]] = response["metadata_submission"][
+        sample_data_key = next(
+            iter(response["metadata_submission"]["sampleData"]), None
+        )
+        if sample_data_key:
+            sample_data: List[Dict[str, Any]] = response["metadata_submission"][
                 "sampleData"
-            ]["soil_data"]
-            soil_data_df: pd.DataFrame = pd.DataFrame(soil_data)
+            ][sample_data_key]
+            sample_data_df: pd.DataFrame = pd.DataFrame(sample_data)
         else:
-            soil_data_df = pd.DataFrame()
+            sample_data_df = pd.DataFrame()
 
         common_df: pd.DataFrame = pd.DataFrame()
         if self.user_facility in self.USER_FACILITY_DICT:
@@ -87,23 +92,39 @@ class MetadataRetriever:
             ].get(self.USER_FACILITY_DICT[self.user_facility], {})
             common_df = pd.DataFrame(user_facility_data)
 
-        if soil_data_df.empty and not common_df.empty:
+        if sample_data_df.empty and not common_df.empty:
             df = common_df
-        elif common_df.empty and not soil_data_df.empty:
-            df = soil_data_df
-        elif not common_df.empty and not soil_data_df.empty:
+        elif common_df.empty and not sample_data_df.empty:
+            df = sample_data_df
+        elif not common_df.empty and not sample_data_df.empty:
             common_cols: List[str] = list(
-                set(common_df.columns.to_list()) & set(soil_data_df.columns.to_list())
+                set(common_df.columns.to_list()) & set(sample_data_df.columns.to_list())
             )
             if unique_field in common_cols:
                 common_cols.remove(unique_field)
 
             common_df = common_df.drop(columns=common_cols)
-            df = pd.merge(soil_data_df, common_df, on=unique_field)
+            df = pd.merge(sample_data_df, common_df, on=unique_field)
         else:
             raise ValueError(
                 f"The submission metadata record: {self.metadata_submission_id} is empty."
             )
+
+        if "lat_lon" in df.columns:
+            df[["latitude", "longitude"]] = df["lat_lon"].str.split(" ", expand=True)
+
+        if "depth" in df.columns:
+            df[["minimum_depth", "maximum_depth"]] = df["depth"].str.split(
+                " - ", expand=True
+            )
+
+        if "geo_loc_name" in df.columns:
+            df["country_name"] = df["geo_loc_name"].str.split(":").str[0]
+
+        if "collection_date" in df.columns:
+            df["collection_year"] = df["collection_date"].str.split("-").str[0]
+            df["collection_month"] = df["collection_date"].str.split("-").str[1]
+            df["collection_day"] = df["collection_date"].str.split("-").str[2]
 
         return df
 
